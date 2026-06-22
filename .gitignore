@@ -1,0 +1,6 @@
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Local Claude Code settings (keep CLAUDE.md tracked, ignore machine-local state)
+.claude/settings.local.json

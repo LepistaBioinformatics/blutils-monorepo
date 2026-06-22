@@ -1,0 +1,6 @@
+[submodule "modules/blutils"]
+	path = modules/blutils
+	url = https://github.com/LepistaBioinformatics/blutils.git
+[submodule "modules/blutils-ui"]
+	path = modules/blutils-ui
+	url = https://github.com/LepistaBioinformatics/blutils-ui.git
