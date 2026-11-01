@@ -27,6 +27,9 @@ says so explicitly.
 | Output formats (R09, R10, R27) | JSONL without `null` config line; tabular rows newline-terminated, 12 columns; keep result `runId` |
 | Taxdump (R15, R16, R30, R31, R34) | row-wise null filtering; no leading `;`; `replace_rank` on the leaf; merged leaf uses target taxid; warn on unparsed values |
 | YAML library (DF-04) | `serde_yaml` → `serde_yaml_ng` (same API) |
+| Leading non-Linnaean ranks (R38, R39) | cutoff of the next default rank; truncation with `take_while` (contiguous prefix) |
+| Thread ceiling (R40) | dedicated pool of `min(threads, chunks)`; `blastn -num_threads threads / concurrency`; `limit_threads` caps the global rayon and Polars pools at startup |
+| Panics (R42, R43) | CLI commands return `anyhow::Result` (exit 1, `Error: …`); core returns `Err` with path/line/chunk context |
 | Viewer (U01–U22) | nullable TS types mirroring Rust `Option`; shape/status validation in the loader; pagination clamping; hook cleanup |
 
 ## Breaking changes
@@ -35,3 +38,6 @@ says so explicitly.
 - `CustomTaxon::from_file` returns `Result<CustomTaxon, MappedErrors>` (R19).
 - Tabular output: one row per line, 12-column no-taxon rows (R10). JSONL omits the config line
   when there is no config (R09).
+- `--threads` caps the whole run instead of each `blastn` call (R40).
+- CLI errors exit with code 1 and `Error: <message>` instead of a panic (code 101) (R42).
+- Results below the species cutoff keep leading non-Linnaean ranks in `taxonomy` (R38).

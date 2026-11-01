@@ -1,7 +1,7 @@
 # Bug Fixes from the Test-Suite Mapping — Specification
 
 > Status: **Done 2026-11-01** · Design: `design.md` · Tasks: `tasks.md` · Decisions: `context.md`
-> Source registries: `002-tests-blutils/design.md` §2 (BUG-R01..R37) and
+> Source registries: `002-tests-blutils/design.md` §2 (BUG-R01..R43) and
 > `003-tests-blutils-ui/design.md` §2 (BUG-U01..U22).
 > Supersedes D-01 for the bugs listed here: the user authorized fixing them (2026-11-01).
 

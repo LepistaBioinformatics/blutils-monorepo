@@ -15,3 +15,8 @@
   unavailable).
 - **DF-05** — OP-01: FR-IDENT-05 reworded to "rank demoted by identity truncation" (user, 2026-11-01).
 - **DF-06** — OP-04: invalid/wrong-shape bodies loaded via URL show the upload message (user, 2026-11-01).
+- **DF-07** — End-to-end findings R38–R41 registered and fixed with regression tests; every `panic!`
+  replaced by an informative error, in the CLI (R42, exit code 1 with `Error: <message>`) and in the
+  core (R43) (user, 2026-11-01). `--threads` now caps the whole run (R40).
+- **DF-08** — OP-05: no minimum bit-score margin before descending a rank; misassignments within
+  the *B. subtilis* group and Enterobacteriaceae are a 16S marker limitation (user, 2026-11-01).

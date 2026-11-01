@@ -47,7 +47,7 @@ Full detail in `.specs/features/001-consensus-classification/design.md` §8.2.
 ## High-severity bugs found during mapping
 
 All fixed on 2026-11-01 with regression tests (R03, R04, R07, R08, R12, U01, U02, U06 and the rest).
-Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG-R01..R37) and
+Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG-R01..R43) and
 `003-tests-blutils-ui/design.md` §2 (BUG-U01..U22). All closed (U11 won't fix).
 
 ## Deferred todos
@@ -69,6 +69,11 @@ Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG
   contract feature 004 implemented (C1–C5) incl. monorepo `.github/workflows/contract.yml`.
 - Latest results: Rust 350 passed / 0 failed / 3 ignored; UI 286 passed / 0 skipped.
 - 2026-11-01: YAML support kept; `serde_yaml` (deprecated) replaced by `serde_yaml_ng` 0.10 (DF-04).
+- 2026-11-01: first end-to-end run with real BLAST+ 2.17 (NCBI 16S + current taxdump + 9 zymo SRA
+  runs, local untracked `e2e/`). Composition matches the ZymoBIOMICS mock; the smoke tests ran for the
+  first time (test helper fixed: mock lineages may stop above species). Findings R38–R43 fixed (F7,
+  DF-07). Rust 356 passed / 0 failed / 3 ignored; smoke 3/3 with BLAST+. Rebuilt taxonomy DB identical
+  to the previous one; full zymo rerun identical except for the R38 `taxonomy` prefix.
 
 ## Preferences
 

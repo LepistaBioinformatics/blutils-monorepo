@@ -12,6 +12,7 @@
 | F4 | UI (`modules/blutils-ui/src`) incl. TS contract nullability | U01–U10, U12–U22 | UI suite complete | ✅ |
 | F5 | Former deferred items | U11 (won't fix), R31, R34 (warn), R37 | DF-03 | ✅ |
 | F6 | YAML library swap | DF-04 | — | ✅ |
+| F7 | End-to-end findings (zymo + NCBI 16S run in `e2e/`) and panic sweep | R38, R39, R40, R41, R42, R43 | DF-07 | ✅ |
 
 Gates: `cargo test --workspace`, `cargo clippy --all-targets`, `CI=true npx craco test --watchAll=false`,
 `npx tsc --noEmit`, `CI=true npx craco build`.
@@ -25,5 +26,9 @@ Gates: `cargo test --workspace`, `cargo clippy --all-targets`, `CI=true npx crac
   a new scientific parameter without a cited source (see CONCERN-02).
 - **OP-03 — open.** `modules/blutils/test/mock/output/zymo-mock/blutils.consensus.json` was produced
   by the old algorithm; its `maxAllowedRank`/`mutated` values no longer match. Regenerating needs BLAST+.
+- **OP-05 — RESOLVED, won't implement** (DF-08). The e2e run (2026-11-01) shows 316/2283 ASVs
+  assigned outside the mock, all where a non-mock reference scores higher (293
+  `bacillus-mojavensis-subgroup`, ~1 nt from *B. subtilis/spizizenii*). Marker/reference limitation,
+  not an algorithm bug; no bit-score margin is added.
 - **OP-04 — RESOLVED** (DF-06): invalid/wrong-shape bodies via `?p=`/sample show the upload message;
   network/non-ok responses keep the load error.
