@@ -1,0 +1,39 @@
+name: Data contract
+
+# Fails when the engine golden and the viewer copy of the data contract
+# (BlutilsOutput <-> BlutilsResult) differ at the pinned submodule commits.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  golden-in-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Compare contract golden with the UI copy
+        run: |
+          golden=modules/blutils/core/tests/fixtures/contract/blutils.contract.json
+          copy=modules/blutils-ui/src/__fixtures__/blutils.contract.json
+          for file in "$golden" "$copy"; do
+            if [ ! -f "$file" ]; then
+              echo "::error file=$file::Missing data contract file $file"
+              exit 1
+            fi
+          done
+          if ! cmp "$golden" "$copy"; then
+            echo "::error::Data contract drift: $copy differs from $golden."
+            echo "Regenerate the golden in modules/blutils with"
+            echo "  UPDATE_GOLDEN=1 cargo test -p blutils-core --test contract"
+            echo "copy it to $copy, update src/types/BlutilsResult.ts if needed,"
+            echo "and bump both submodule pointers."
+            diff -u "$golden" "$copy" || true
+            exit 1
+          fi
+          echo "Data contract golden and UI copy are identical."
