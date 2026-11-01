@@ -12,7 +12,8 @@ code of its own — the real work lives in two git submodules under `modules/`:
 
 The two are decoupled at runtime: the CLI produces a serialized result file and
 the UI consumes it. They share no build system and never import each other —
-**the only contract between them is the JSON/YAML output schema** (see below).
+**the only contract between them is the JSON/YAML output schema** (see below). The viewer
+reads JSON only; the engine also emits JSONL and YAML (via `serde_yaml_ng`).
 
 ## Working with submodules
 
