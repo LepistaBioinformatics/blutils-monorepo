@@ -37,7 +37,7 @@ Full detail in `.specs/features/001-consensus-classification/design.md` §8.2.
 - **CONCERN-06** — `fold_results_by_query` materializes the entire DataFrame and iterates outside the
   polars lazy engine.
 
-## Code × as-built spec discrepancies (resolved 2026-11-01 — code fixed to match spec, see 005 DF-01; OP-01 open)
+## Code × as-built spec discrepancies (resolved 2026-11-01 — code fixed to match spec, see 005 DF-01; OP-01 resolved via DF-05)
 
 - **FR-IDENT-03** × BUG-R01 — `get_rank_adjusted_by_identity` returns the 1st rank with cutoff ≥
   identity (one rank deeper). Confirmed by test.
@@ -63,7 +63,7 @@ Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG
 - Results: Rust workspace 345 passed / 0 failed / 3 ignored (BLAST+ smoke); UI 269 passed / 1 skipped
   (BUG-U11); `cargo clippy --all-targets` 0 errors; `tsc` clean; `craco build` OK.
 - Bugs fixed with regression tests: BUG-R01..R30, R32, R33, R35, R36 (34) and BUG-U01..U10, U12..U22 (21).
-  Plan and open points: `.specs/features/005-test-suite-bugfixes/spec.md` (OP-01..OP-04).
+  Plan: `.specs/features/005-test-suite-bugfixes/` (decisions in `context.md`, open points OP-01..OP-04 in `tasks.md`).
 - Follow-up round (same day): R31, R34 (warn), R37 fixed; U11 won't fix (UI JSON-only); OP-01
   (FR-IDENT-05 reworded) and OP-04 resolved; CI test jobs added (T5.6 `rust.yml`, U4.4 `deploy.yml`);
   contract feature 004 implemented (C1–C5) incl. monorepo `.github/workflows/contract.yml`.
