@@ -14,8 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
+
+      # Only the code submodules: modules/blutils-benchmarks is private and
+      # large (Git LFS), and the workflow token cannot read it.
+      - name: Check out the code submodules
+        run: git submodule update --init modules/blutils modules/blutils-ui
 
       - name: Compare contract golden with the UI copy
         run: |

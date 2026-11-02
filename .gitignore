@@ -5,5 +5,3 @@
 # Local Claude Code settings (keep CLAUDE.md tracked, ignore machine-local state)
 .claude/settings.local.json
 
-# Local end-to-end runs (tools, databases, reads, outputs)
-e2e/

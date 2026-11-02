@@ -9,6 +9,11 @@ code of its own — the real work lives in two git submodules under `modules/`:
 
 - `modules/blutils` — the Rust engine ([LepistaBioinformatics/blutils](https://github.com/LepistaBioinformatics/blutils))
 - `modules/blutils-ui` — the React result viewer ([LepistaBioinformatics/blutils-ui](https://github.com/LepistaBioinformatics/blutils-ui))
+- `modules/blutils-benchmarks` — **private**, Git LFS (~6 GB): end-to-end benchmark
+  evidence (ZymoBIOMICS mock, blutils vs QIIME 2) and the preprint
+  ([LepistaBioinformatics/blutils-benchmarks](https://github.com/LepistaBioinformatics/blutils-benchmarks)).
+  Marked `update = none`: plain `git submodule update` skips it; fetch it with
+  `git submodule update --init --checkout modules/blutils-benchmarks`.
 
 The two are decoupled at runtime: the CLI produces a serialized result file and
 the UI consumes it. They share no build system and never import each other —
@@ -21,7 +26,7 @@ The submodules are pinned to specific commits. Always be explicit about which
 one you are operating in.
 
 ```bash
-git submodule update --init --recursive   # first checkout / refresh pins
+git submodule update --init --recursive   # first checkout / refresh pins (skips blutils-benchmarks)
 git submodule update --remote modules/blutils-ui   # bump a single module to its upstream tip
 ```
 
