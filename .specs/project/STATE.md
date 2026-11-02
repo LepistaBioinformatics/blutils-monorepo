@@ -52,6 +52,9 @@ Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG
 
 ## Deferred todos
 
+- Migrate blutils-ui off CRA (`react-scripts@5`) to clear the 13 residual dev-toolchain Dependabot
+  alerts (`006-ui-dependabot-vulns/tasks.md`).
+
 - Regenerate the stale zymo golden output with the fixed algorithm (OP-03; needs BLAST+).
 - OP-02: source for the Kingdom cutoff (67.5) and the other built-in cutoffs (CONCERN-02).
 - Evaluate mitigations for remaining CONCERN-02/05/06 (`001-consensus-classification/design.md` §8.3).
@@ -88,3 +91,23 @@ Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG
 ## Preferences
 
 - Artifact language: English (see `.claude/rules/english-only.md`, 2026-11-01). All existing `.specs` docs translated on 2026-11-01.
+
+## blutils-ui 2026-11-02
+
+- `006-ui-dependabot-vulns`: 72/85 alerts fixed (flowbite-react 0.7.8, react-router 7.18.5);
+  merged as blutils-ui PR #9. The 13 residuals are react-scripts dev tooling.
+- `007-ui-virtual-scroll-group-pager`, `quick/001-theme-mode-toggle`,
+  `008-ui-record-list-advanced-filter` and `009-ui-group-charts`, plus the docs refresh
+  (`quick/002-viewer-docs-refresh`). The user approved commit, PR, merge, GitHub Pages deploy
+  and pointer update on 2026-11-02.
+- The bare minimatch resolution was removed: it crashed `yarn start` on any type error.
+- The sample dataset is now the benchmark ITS relaxed output, published with the UI
+  (`public/examples`).
+- Shipped 2026-11-02:
+  - blutils-ui PR #10 was merged (1f9932f) and deployed to GitHub Pages (gh-pages cf2dd16). The
+    live check passed: the sample loads 1370 records and Charts mode works.
+  - The blutils docs PRs #12 and #13 were merged (961b5f9).
+  - The monorepo pointers were bumped through a PR.
+- Follow-up: a direct visit to `/blutils-ui/docs/...` returns GitHub's 404, because there is no
+  SPA `404.html` fallback in the Pages build. This predates the rework; entering through the
+  app works.
