@@ -75,6 +75,16 @@ Full registry with regression-test names: `002-tests-blutils/design.md` §2 (BUG
   DF-07). Rust 356 passed / 0 failed / 3 ignored; smoke 3/3 with BLAST+. Rebuilt taxonomy DB identical
   to the previous one; full zymo rerun identical except for the R38 `taxonomy` prefix.
 
+## Release 9.0.0 (2026-11-02)
+
+- `test/foundation` merged into blutils `main` (PR #10); `cargo release 9.0.0` published
+  `blutils-core`, `blutils-proc-adapter` and `blutils-cli` 9.0.0 to crates.io, tag `9.0.0`
+  (commit `7940285`) and GitHub Release 9.0.0.
+- The release workflow's `publish-crate` job calls `./publish-all.sh`, which does not exist in the
+  repository; crates were published locally with cargo-release.
+- Benchmark evidence and preprint: `modules/blutils-benchmarks` (LepistaBioinformatics/blutils-benchmarks,
+  Git LFS, `update = none`); blutils 9.0.0 reproduces the a62b2cd results exactly.
+
 ## Preferences
 
 - Artifact language: English (see `.claude/rules/english-only.md`, 2026-11-01). All existing `.specs` docs translated on 2026-11-01.
