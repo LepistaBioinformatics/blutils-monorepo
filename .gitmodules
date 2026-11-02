@@ -4,3 +4,8 @@
 [submodule "modules/blutils-ui"]
 	path = modules/blutils-ui
 	url = https://github.com/LepistaBioinformatics/blutils-ui.git
+[submodule "modules/blutils-benchmarks"]
+	path = modules/blutils-benchmarks
+	url = https://github.com/LepistaBioinformatics/blutils-benchmarks.git
+	update = none
+	branch = main
